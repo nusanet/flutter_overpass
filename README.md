@@ -1,15 +1,36 @@
-# flutter_overpass
+# Flutter Overpass Plugin
+A Flutter plugin to get data from overpass api [https://overpass-turbo.eu](https://overpass-turbo.eu) and [https://nominatim.openstreetmap.org](https://nominatim.openstreetmap.org). Support Android and iOS.
+Feel free to contribute.
 
-A new Flutter plugin project.
+## Features
+- [X] Get nearby places by coordinate and radius.
+- [X] Use raw Overpass QL to get result
+- [X] Fetch place by coordinates given
+- [X] Search by address
 
-## Getting Started
+## How to use
+```dart
+final flutterOverpass = FlutterOverpass();
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+// Fetch nearby nodes by coordinates and radius given.
+final nearbyPlaces = await flutterOverpass.getNearbyNodes(
+          latitude: 200,
+          longitude: 37.79396544487583,
+          radius: -122.3838801383972,
+        );
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+// Fetch data by executing Overpass QL.
+final rawResults = await flutterOverpass.rawOverpassQL('node(around:200,37.79396544487583,-122.3838801383972);');
 
+// Fetch place by coordinates given.
+final places = await flutterOverpass.getPlaceFromCoordinate(
+          latitude: 200,
+          longitude: 37.79396544487583,
+        );
+
+// Search by address.
+final places = await flutterOverpass.searchAddress(
+          address: 'Rihanna Drive',
+        );
+```
+For more queries you can visit here: [Overpass QL](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
