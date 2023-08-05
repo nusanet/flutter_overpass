@@ -1,0 +1,87 @@
+{
+    "version": 0.6,
+    "generator": "Overpass API 0.7.61.4 df4c946a",
+    "osm3s": {
+        "timestamp_osm_base": "2023-08-04T01:56:13Z",
+        "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+    },
+    "elements": [
+        {
+            "type": "node",
+            "id": 9393285992,
+            "lat": 3.5762975,
+            "lon": 98.6824512,
+            "tags": {
+                "addr:city": "Medan",
+                "addr:housenumber": "D1",
+                "addr:postcode": "20156",
+                "addr:street": "Jalan H. Misbah",
+                "name": "PT. Media Antar Nusa (Nusanet Medan)",
+                "office": "yes",
+                "opening_hours": "Mo-Su 08:30-17:00",
+                "opening_hours:covid19": "open",
+                "website": "https://nusa.net.id"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805627796,
+            "lat": 3.5764856,
+            "lon": 98.6813678,
+            "tags": {
+                "amenity": "language_school",
+                "name": "Osaka Education"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805683155,
+            "lat": 3.5754271,
+            "lon": 98.6821655,
+            "tags": {
+                "beauty": "skin_care",
+                "name": "Kusuma Beauty Clinik"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805688877,
+            "lat": 3.5753974,
+            "lon": 98.6810524,
+            "tags": {
+                "beauty": "skin_care",
+                "name": "Flawless Clinic"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805692600,
+            "lat": 3.5756136,
+            "lon": 98.6822782,
+            "tags": {
+                "amenity": "school",
+                "name": "Bimbingan Belajar Eureka"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805718531,
+            "lat": 3.5756195,
+            "lon": 98.6822056,
+            "tags": {
+                "amenity": "music_school",
+                "name": "Concerkino Music School"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9805763521,
+            "lat": 3.5751830,
+            "lon": 98.6814374,
+            "tags": {
+                "amenity": "school",
+                "name": "Matematika Sakamoto"
+            }
+        }
+    ]
+}

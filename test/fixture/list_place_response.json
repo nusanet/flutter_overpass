@@ -1,0 +1,34 @@
+[
+    {
+        "place_id": 211926976,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "way",
+        "osm_id": 464797779,
+        "lat": "-34.43969545",
+        "lon": "-58.70560607613984",
+        "place_rank": 30,
+        "category": "amenity",
+        "type": "fuel",
+        "importance": 9.99999999995449e-6,
+        "addresstype": "amenity",
+        "name": "YPF",
+        "display_name": "YPF, Autopista Pedro Eugenio Aramburu, El Triángulo, Partido de Malvinas Argentinas, Buenos Aires, B1619AGS, Argentina",
+        "address": {
+            "amenity": "YPF",
+            "road": "Autopista Pedro Eugenio Aramburu",
+            "village": "El Triángulo",
+            "state_district": "Partido de Malvinas Argentinas",
+            "state": "Buenos Aires",
+            "ISO3166-2-lvl4": "AR-B",
+            "postcode": "B1619AGS",
+            "country": "Argentina",
+            "country_code": "ar"
+        },
+        "boundingbox": [
+            "-34.4398496",
+            "-34.4395604",
+            "-58.7058299",
+            "-58.7054422"
+        ]
+    }
+]
