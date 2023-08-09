@@ -88,8 +88,14 @@ void main() {
         expect(
           tModel.props,
           [
+            tModel.building,
+            tModel.houseNumber,
             tModel.road,
+            tModel.quarter,
+            tModel.suburb,
             tModel.village,
+            tModel.cityDistrict,
+            tModel.city,
             tModel.stateDistrict,
             tModel.state,
             tModel.postcode,
@@ -106,7 +112,7 @@ void main() {
         // assert
         expect(
           tModel.toString(),
-          'Address{road: ${tModel.road}, village: ${tModel.village}, stateDistrict: ${tModel.stateDistrict}, state: ${tModel.state}, postcode: ${tModel.postcode}, country: ${tModel.country}, countryCode: ${tModel.countryCode}}',
+          'Address{building: ${tModel.building}, houseNumber: ${tModel.houseNumber}, road: ${tModel.road}, quarter: ${tModel.quarter}, suburb: ${tModel.suburb}, village: ${tModel.village}, cityDistrict: ${tModel.cityDistrict}, city: ${tModel.city}, stateDistrict: ${tModel.stateDistrict}, state: ${tModel.state}, postcode: ${tModel.postcode}, country: ${tModel.country}, countryCode: ${tModel.countryCode}}',
         );
       },
     );
