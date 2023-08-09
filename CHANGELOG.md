@@ -1,3 +1,8 @@
+## 1.0.1
+
+* Add properties to PlaceResponse
+* Fix example on readme.md
+
 ## 1.0.0
 
 * Initial release

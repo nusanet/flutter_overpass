@@ -119,8 +119,14 @@ class PlaceResponse extends Equatable {
 )
 class Address extends Equatable {
   const Address({
+    this.building,
+    this.houseNumber,
     this.road,
+    this.quarter,
+    this.suburb,
     this.village,
+    this.cityDistrict,
+    this.city,
     this.stateDistrict,
     this.state,
     this.postcode,
@@ -128,13 +134,36 @@ class Address extends Equatable {
     this.countryCode,
   });
 
+  // Building.
+  @JsonKey(name: 'building')
+  final String? building;
+
+  // House number.
+  @JsonKey(name: 'house_number')
+  final String? houseNumber;
+
   // Road.
   @JsonKey(name: 'road')
   final String? road;
 
+  // Road.
+  @JsonKey(name: 'quarter')
+  final String? quarter;
+
+  @JsonKey(name: 'suburb')
+  final String? suburb;
+
   // Village.
   @JsonKey(name: 'village')
   final String? village;
+
+  // State district.
+  @JsonKey(name: 'city_district')
+  final String? cityDistrict;
+
+  // City.
+  @JsonKey(name: 'city')
+  final String? city;
 
   // State district.
   @JsonKey(name: 'state_district')
@@ -162,8 +191,14 @@ class Address extends Equatable {
 
   @override
   List<Object?> get props => [
+        building,
+        houseNumber,
         road,
+        quarter,
+        suburb,
         village,
+        cityDistrict,
+        city,
         stateDistrict,
         state,
         postcode,
@@ -173,6 +208,6 @@ class Address extends Equatable {
 
   @override
   String toString() {
-    return 'Address{road: $road, village: $village, stateDistrict: $stateDistrict, state: $state, postcode: $postcode, country: $country, countryCode: $countryCode}';
+    return 'Address{building: $building, houseNumber: $houseNumber, road: $road, quarter: $quarter, suburb: $suburb, village: $village, cityDistrict: $cityDistrict, city: $city, stateDistrict: $stateDistrict, state: $state, postcode: $postcode, country: $country, countryCode: $countryCode}';
   }
 }

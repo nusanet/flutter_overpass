@@ -14,9 +14,9 @@ final flutterOverpass = FlutterOverpass();
 
 // Fetch nearby nodes by coordinates and radius given.
 final nearbyPlaces = await flutterOverpass.getNearbyNodes(
-          latitude: 200,
+          latitude: -122.3838801383972,
           longitude: 37.79396544487583,
-          radius: -122.3838801383972,
+          radius: 200,
         );
 
 // Fetch data by executing Overpass QL.
@@ -24,7 +24,7 @@ final rawResults = await flutterOverpass.rawOverpassQL('node(around:200,37.79396
 
 // Fetch place by coordinates given.
 final places = await flutterOverpass.getPlaceFromCoordinate(
-          latitude: 200,
+          latitude: -122.3838801383972,
           longitude: 37.79396544487583,
         );
 

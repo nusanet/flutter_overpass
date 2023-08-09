@@ -49,8 +49,14 @@ Map<String, dynamic> _$PlaceResponseToJson(PlaceResponse instance) =>
     };
 
 Address _$AddressFromJson(Map<String, dynamic> json) => Address(
+      building: json['building'] as String?,
+      houseNumber: json['house_number'] as String?,
       road: json['road'] as String?,
+      quarter: json['quarter'] as String?,
+      suburb: json['suburb'] as String?,
       village: json['village'] as String?,
+      cityDistrict: json['city_district'] as String?,
+      city: json['city'] as String?,
       stateDistrict: json['state_district'] as String?,
       state: json['state'] as String?,
       postcode: json['postcode'] as String?,
@@ -59,8 +65,14 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
     );
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'building': instance.building,
+      'house_number': instance.houseNumber,
       'road': instance.road,
+      'quarter': instance.quarter,
+      'suburb': instance.suburb,
       'village': instance.village,
+      'city_district': instance.cityDistrict,
+      'city': instance.city,
       'state_district': instance.stateDistrict,
       'state': instance.state,
       'postcode': instance.postcode,
