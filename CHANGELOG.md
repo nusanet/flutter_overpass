@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Add out outputQuery parameter to rawOverpassQL
+
 ## 1.0.1
 
 * Add properties to PlaceResponse

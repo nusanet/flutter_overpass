@@ -9,6 +9,9 @@ import 'package:flutter_overpass/src/data/util/string_extension.dart';
 
 import 'flutter_overpass_platform_interface.dart';
 
+export 'src/data/models/node_response.dart';
+export 'src/data/models/place_response.dart';
+
 class FlutterOverpass {
   FlutterOverpass({
     this.headers,
@@ -64,14 +67,16 @@ class FlutterOverpass {
 
   // Function to get raw overpassQL response by query given. Will throw DioExeption when error.
   // Example: final rawResults = await flutterOverpass.rawOverpassQL('node(around:200,37.79396544487583,-122.3838801383972);');
-  Future<Map<String, dynamic>> rawOverpassQL({
+  Future<dynamic> rawOverpassQL({
     // Raw query to be executed.
     required String query,
     // This will add "out body;" to the query.
     bool useOutBody = true,
+    // Output expected.
+    String outputQuery = '[out:json];',
   }) async {
     const path = BaseUrlConfig.overpassUrl;
-    String queryToExecute = '[out:json];$query';
+    String queryToExecute = '$outputQuery$query';
     queryToExecute = useOutBody ? '${queryToExecute}out body;' : queryToExecute;
     final response = await dio!.get(
       path,
@@ -80,7 +85,7 @@ class FlutterOverpass {
       },
     );
     if (response.statusCode == 200) {
-      return Map<String, dynamic>.from(response.data);
+      return response.data;
     } else {
       throw DioException(
         requestOptions: RequestOptions(

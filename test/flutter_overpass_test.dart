@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_overpass/src/data/models/node_response.dart';
-import 'package:flutter_overpass/src/data/models/place_response.dart';
 import 'package:flutter_overpass/src/data/util/base_url_config.dart';
 import 'package:flutter_overpass/src/data/util/queries.dart';
 import 'package:flutter_overpass/src/data/util/string_extension.dart';
