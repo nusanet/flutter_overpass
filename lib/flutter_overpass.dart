@@ -24,6 +24,7 @@ class FlutterOverpass {
     );
   }
 
+  // aku tambahin line ini
   // `headers` is a map of headers to be added to each request
   final Map<String, dynamic>? headers;
 
@@ -139,7 +140,8 @@ class FlutterOverpass {
       },
     );
     if (response.statusCode == 200) {
-      return List<PlaceResponse>.from((json.decode(json.encode(response.data))).map((x) => PlaceResponse.fromJson(x)));
+      return List<PlaceResponse>.from((json.decode(json.encode(response.data)))
+          .map((x) => PlaceResponse.fromJson(x)));
     } else {
       throw DioException(
         requestOptions: RequestOptions(
