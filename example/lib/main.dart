@@ -23,7 +23,8 @@ class _MyAppState extends State<MyApp> {
   final _controllerLongitude = TextEditingController(text: '98.68233751995223');
   final _controllerRadius = TextEditingController(text: '200');
   final _controllerAddress = TextEditingController(text: 'Rihanna Drive');
-  final _controllerQuery = TextEditingController(text: 'node(around:200,37.79396544487583,-122.3838801383972);');
+  final _controllerQuery = TextEditingController(
+      text: 'node(around:200,37.79396544487583,-122.3838801383972);');
 
   String _results = '';
 
@@ -50,7 +51,8 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await _flutterOverpassPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _flutterOverpassPlugin.getPlatformVersion() ??
+          'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -108,22 +110,29 @@ class _MyAppState extends State<MyApp> {
                           child: Text('Running on: $_platformVersion\n'),
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(labelText: 'Latitude'),
+                          decoration:
+                              const InputDecoration(labelText: 'Latitude'),
                           controller: _controllerLatitude,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(labelText: 'Longitude'),
+                          decoration:
+                              const InputDecoration(labelText: 'Longitude'),
                           controller: _controllerLongitude,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(labelText: 'Radius'),
+                          decoration:
+                              const InputDecoration(labelText: 'Radius'),
                           controller: _controllerRadius,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(labelText: 'Address'),
+                          decoration:
+                              const InputDecoration(labelText: 'Address'),
                           controller: _controllerAddress,
                         ),
                         const SizedBox(
@@ -139,9 +148,12 @@ class _MyAppState extends State<MyApp> {
                               setState(() {
                                 _results = '';
                               });
-                              final result = await _flutterOverpassPlugin.getNearbyNodes(
-                                latitude: double.parse(_controllerLatitude.text),
-                                longitude: double.parse(_controllerLongitude.text),
+                              final result =
+                                  await _flutterOverpassPlugin.getNearbyNodes(
+                                latitude:
+                                    double.parse(_controllerLatitude.text),
+                                longitude:
+                                    double.parse(_controllerLongitude.text),
                                 radius: double.parse(_controllerRadius.text),
                               );
                               setState(() {
@@ -155,14 +167,18 @@ class _MyAppState extends State<MyApp> {
                         Center(
                           child: TextButton(
                             onPressed: () async {
-                              if (_controllerLongitude.text.isEmpty || _controllerLatitude.text.isEmpty) return;
+                              if (_controllerLongitude.text.isEmpty ||
+                                  _controllerLatitude.text.isEmpty) return;
                               _isLoading.value = true;
                               setState(() {
                                 _results = '';
                               });
-                              final result = await _flutterOverpassPlugin.getPlaceFromCoordinate(
-                                latitude: double.parse(_controllerLatitude.text),
-                                longitude: double.parse(_controllerLongitude.text),
+                              final result = await _flutterOverpassPlugin
+                                  .getPlaceFromCoordinate(
+                                latitude:
+                                    double.parse(_controllerLatitude.text),
+                                longitude:
+                                    double.parse(_controllerLongitude.text),
                               );
                               setState(() {
                                 _results = result.toString();
@@ -180,11 +196,13 @@ class _MyAppState extends State<MyApp> {
                               setState(() {
                                 _results = '';
                               });
-                              final result = await _flutterOverpassPlugin.searchAddress(
+                              final result =
+                                  await _flutterOverpassPlugin.searchAddress(
                                 address: _controllerAddress.text,
                               );
                               setState(() {
-                                _results = result.map((e) => e.toString()).join('\n');
+                                _results =
+                                    result.map((e) => e.toString()).join('\n');
                               });
                               _isLoading.value = false;
                             },
@@ -195,7 +213,8 @@ class _MyAppState extends State<MyApp> {
                           height: 44,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(labelText: 'Overpass Query'),
+                          decoration: const InputDecoration(
+                              labelText: 'Overpass Query'),
                           controller: _controllerQuery,
                         ),
                         Center(
@@ -205,8 +224,10 @@ class _MyAppState extends State<MyApp> {
                               setState(() {
                                 _results = '';
                               });
-                              final result = await _flutterOverpassPlugin.rawOverpassQL(
-                                query: 'node(around:200,37.79396544487583,-122.3838801383972);',
+                              final result =
+                                  await _flutterOverpassPlugin.rawOverpassQL(
+                                query:
+                                    'node(around:200,37.79396544487583,-122.3838801383972);',
                               );
                               setState(() {
                                 _results = result.toString();

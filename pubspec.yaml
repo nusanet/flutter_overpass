@@ -1,6 +1,6 @@
 name: flutter_overpass
 description: Flutter plugin to use overpass api with flutter. Support both Android and iOS.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/nusanet/flutter_overpass.git
 
 environment:
