@@ -8,13 +8,13 @@ part of 'place_response.dart';
 
 PlaceResponse _$PlaceResponseFromJson(Map<String, dynamic> json) =>
     PlaceResponse(
-      placeId: (json['place_id'] as num?)?.toInt(),
+      placeId: json['place_id'] as int?,
       licence: json['licence'] as String?,
       osmType: json['osm_type'] as String?,
-      osmId: (json['osm_id'] as num?)?.toInt(),
+      osmId: json['osm_id'] as int?,
       latitude: json['lat'] as String?,
       longitude: json['lon'] as String?,
-      placeRank: (json['place_rank'] as num?)?.toInt(),
+      placeRank: json['place_rank'] as int?,
       category: json['category'] as String?,
       type: json['type'] as String?,
       importance: (json['importance'] as num?)?.toDouble(),

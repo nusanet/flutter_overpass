@@ -27,7 +27,7 @@ Map<String, dynamic> _$NodeResponseToJson(NodeResponse instance) =>
 
 Element _$ElementFromJson(Map<String, dynamic> json) => Element(
       type: json['type'] as String?,
-      id: (json['id'] as num?)?.toInt(),
+      id: json['id'] as int?,
       lat: (json['lat'] as num?)?.toDouble(),
       lon: (json['lon'] as num?)?.toDouble(),
       tags: json['tags'] == null

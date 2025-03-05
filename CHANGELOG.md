@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Add configurable urls and additional raw json for tags
+
 ## 1.1.1
 
 * Add support for AGP 8
