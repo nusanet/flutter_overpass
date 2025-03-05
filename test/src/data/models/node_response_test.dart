@@ -148,6 +148,7 @@ void main() {
             tModel.website,
             tModel.amenity,
             tModel.beauty,
+            tModel.rawTags
           ],
         );
       },
@@ -159,7 +160,7 @@ void main() {
         // assert
         expect(
           tModel.toString(),
-          'Tag{addrCity: ${tModel.addrCity}, addrHousenumber: ${tModel.addrHousenumber}, addrPostcode: ${tModel.addrPostcode}, addrStreet: ${tModel.addrStreet}, name: ${tModel.name}, office: ${tModel.office}, openingHours: ${tModel.openingHours}, openingHoursCovid19: ${tModel.openingHoursCovid19}, website: ${tModel.website}, amenity: ${tModel.amenity}, beauty: ${tModel.beauty}}',
+          'Tag{addrCity: ${tModel.addrCity}, addrHousenumber: ${tModel.addrHousenumber}, addrPostcode: ${tModel.addrPostcode}, addrStreet: ${tModel.addrStreet}, name: ${tModel.name}, office: ${tModel.office}, openingHours: ${tModel.openingHours}, openingHoursCovid19: ${tModel.openingHoursCovid19}, website: ${tModel.website}, amenity: ${tModel.amenity}, beauty: ${tModel.beauty}, raw tags: ${tModel.rawTags}}',
         );
       },
     );
@@ -191,6 +192,15 @@ void main() {
         expect(actualMap, json.encode(tModel.toJson()));
       },
     );
+
+    test('make sure dynamic properties on the element are preserved', () async {
+      final jsonResponse = json.decode(fixture('node_response.json'));
+      final response = NodeResponse.fromJson(jsonResponse);
+
+      final firstElement = response.elements!.first;
+
+      expect(firstElement.tags?.rawTags['dynamic_tag'], 'dynamic tag');
+    });
   });
 
   group('Osm', () {

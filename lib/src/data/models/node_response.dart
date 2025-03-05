@@ -30,7 +30,8 @@ class NodeResponse extends Equatable {
   @JsonKey(name: 'elements')
   final List<Element>? elements;
 
-  factory NodeResponse.fromJson(Map<String, dynamic> json) => _$NodeResponseFromJson(json);
+  factory NodeResponse.fromJson(Map<String, dynamic> json) =>
+      _$NodeResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$NodeResponseToJson(this);
 
@@ -80,7 +81,8 @@ class Element extends Equatable {
   @JsonKey(name: 'tags')
   final Tag? tags;
 
-  factory Element.fromJson(Map<String, dynamic> json) => _$ElementFromJson(json);
+  factory Element.fromJson(Map<String, dynamic> json) =>
+      _$ElementFromJson(json);
 
   Map<String, dynamic> toJson() => _$ElementToJson(this);
 
@@ -115,6 +117,7 @@ class Tag extends Equatable {
     this.website,
     this.amenity,
     this.beauty,
+    this.rawTags = const <String, dynamic>{},
   });
 
   // City of the element.
@@ -161,9 +164,46 @@ class Tag extends Equatable {
   @JsonKey(name: 'beauty')
   final String? beauty;
 
-  factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
+  // The raw tags of this element
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final Map<String, dynamic> rawTags;
 
-  Map<String, dynamic> toJson() => _$TagToJson(this);
+  factory Tag.fromJson(Map<String, dynamic> json) {
+    final tag = _$TagFromJson(json);
+    return tag.copyWith(additionalTags: json);
+  }
+
+  Map<String, dynamic> toJson() => {...rawTags};
+
+  Tag copyWith({
+    String? addrCity,
+    String? addrHousenumber,
+    String? addrPostcode,
+    String? addrStreet,
+    String? name,
+    String? office,
+    String? openingHours,
+    String? openingHoursCovid19,
+    String? website,
+    String? amenity,
+    String? beauty,
+    Map<String, dynamic>? additionalTags,
+  }) {
+    return Tag(
+      addrCity: addrCity ?? this.addrCity,
+      addrHousenumber: addrHousenumber ?? this.addrHousenumber,
+      addrPostcode: addrPostcode ?? this.addrPostcode,
+      addrStreet: addrStreet ?? this.addrStreet,
+      name: name ?? this.name,
+      office: office ?? this.office,
+      openingHours: openingHours ?? this.openingHours,
+      openingHoursCovid19: openingHoursCovid19 ?? this.openingHoursCovid19,
+      website: website ?? this.website,
+      amenity: amenity ?? this.amenity,
+      beauty: beauty ?? this.beauty,
+      rawTags: additionalTags ?? this.rawTags,
+    );
+  }
 
   @override
   List<Object?> get props => [
@@ -178,11 +218,12 @@ class Tag extends Equatable {
         website,
         amenity,
         beauty,
+        rawTags,
       ];
 
   @override
   String toString() {
-    return 'Tag{addrCity: $addrCity, addrHousenumber: $addrHousenumber, addrPostcode: $addrPostcode, addrStreet: $addrStreet, name: $name, office: $office, openingHours: $openingHours, openingHoursCovid19: $openingHoursCovid19, website: $website, amenity: $amenity, beauty: $beauty}';
+    return 'Tag{addrCity: $addrCity, addrHousenumber: $addrHousenumber, addrPostcode: $addrPostcode, addrStreet: $addrStreet, name: $name, office: $office, openingHours: $openingHours, openingHoursCovid19: $openingHoursCovid19, website: $website, amenity: $amenity, beauty: $beauty, raw tags: $rawTags}';
   }
 }
 

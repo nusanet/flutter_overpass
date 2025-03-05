@@ -16,6 +16,8 @@ class FlutterOverpass {
   FlutterOverpass({
     this.headers,
     this.dio,
+    this.overpassUrl = BaseUrlConfig.overpassUrl,
+    this.nominatimUrl = BaseUrlConfig.nominatimUrl,
   }) {
     dio ??= Dio(
       BaseOptions(
@@ -30,6 +32,12 @@ class FlutterOverpass {
   // `dio` is a preconfigured instance of Dio
   Dio? dio;
 
+  // The overpass interpreter url, defaults to 'https://overpass-api.de/api/interpreter'
+  final String overpassUrl;
+
+  // The nominatim url, defaults to 'https://nominatim.openstreetmap.org'
+  final String nominatimUrl;
+
   Future<String?> getPlatformVersion() {
     return FlutterOverpassPlatform.instance.getPlatformVersion();
   }
@@ -43,9 +51,8 @@ class FlutterOverpass {
     // Radius from the point.
     required double radius,
   }) async {
-    const path = BaseUrlConfig.overpassUrl;
     final response = await dio!.get(
-      path,
+      overpassUrl,
       queryParameters: {
         'data': Queries.nearbyPlacesByCoordinate.format({
           'latitude': latitude,
@@ -59,7 +66,7 @@ class FlutterOverpass {
     } else {
       throw DioException(
         requestOptions: RequestOptions(
-          path: path,
+          path: overpassUrl,
         ),
       );
     }
@@ -75,11 +82,10 @@ class FlutterOverpass {
     // Output expected.
     String outputQuery = '[out:json];',
   }) async {
-    const path = BaseUrlConfig.overpassUrl;
     String queryToExecute = '$outputQuery$query';
     queryToExecute = useOutBody ? '${queryToExecute}out body;' : queryToExecute;
     final response = await dio!.get(
-      path,
+      overpassUrl,
       queryParameters: {
         'data': queryToExecute,
       },
@@ -89,7 +95,7 @@ class FlutterOverpass {
     } else {
       throw DioException(
         requestOptions: RequestOptions(
-          path: path,
+          path: overpassUrl,
         ),
       );
     }
@@ -103,7 +109,7 @@ class FlutterOverpass {
     // Longitude of the point.
     required double longitude,
   }) async {
-    const path = '${BaseUrlConfig.nominatimUrl}/reverse';
+    final path = '$nominatimUrl/reverse';
     final response = await dio!.get(
       path,
       queryParameters: {
@@ -129,7 +135,7 @@ class FlutterOverpass {
     // Latitude of the point.
     required String address,
   }) async {
-    const path = '${BaseUrlConfig.nominatimUrl}/search';
+    final path = '$nominatimUrl/search';
     final response = await dio!.get(
       path,
       queryParameters: {
@@ -139,7 +145,8 @@ class FlutterOverpass {
       },
     );
     if (response.statusCode == 200) {
-      return List<PlaceResponse>.from((json.decode(json.encode(response.data))).map((x) => PlaceResponse.fromJson(x)));
+      return List<PlaceResponse>.from((json.decode(json.encode(response.data)))
+          .map((x) => PlaceResponse.fromJson(x)));
     } else {
       throw DioException(
         requestOptions: RequestOptions(

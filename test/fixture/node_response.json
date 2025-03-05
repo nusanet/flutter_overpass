@@ -20,7 +20,8 @@
                 "office": "yes",
                 "opening_hours": "Mo-Su 08:30-17:00",
                 "opening_hours:covid19": "open",
-                "website": "https://nusa.net.id"
+                "website": "https://nusa.net.id",
+                "dynamic_tag": "dynamic tag"
             }
         },
         {
